@@ -41,21 +41,6 @@
         <script src="data/Ladestationen_errichtet_4.js"></script>
         <script src="data/Ladestationen_inUmsetzung_5.js"></script>
         <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
-
-            if (e.target.feature.geometry.type === 'LineString' || e.target.feature.geometry.type === 'MultiLineString') {
-              highlightLayer.setStyle({
-                color: 'rgba(255, 255, 0, 1.00)',
-              });
-            } else {
-              highlightLayer.setStyle({
-                fillColor: 'rgba(255, 255, 0, 1.00)',
-                fillOpacity: 1
-              });
-            }
-        }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[48.10699956295004,16.111404848406735],[48.33330719276942,16.64984276173235]]);
@@ -142,16 +127,6 @@
         function setBounds() {
         }
         function pop_Bezirksgrenzen_Wien_0(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -252,16 +227,6 @@
         layer_OpenStreetMap_1;
         map.addLayer(layer_OpenStreetMap_1);
         function pop_Zaehlgebiete_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['BEZNR'] !== null ? autolinker.link(String(feature.properties['BEZNR']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -329,16 +294,6 @@
         bounds_group.addLayer(layer_Zaehlgebiete_2);
         map.addLayer(layer_Zaehlgebiete_2);
         function pop_Bezirksnamen_Wien_3(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -419,16 +374,6 @@
         bounds_group.addLayer(layer_Bezirksnamen_Wien_3);
         map.addLayer(layer_Bezirksnamen_Wien_3);
         function pop_Ladestationen_errichtet_4(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['MAP Adresse'] !== null ? autolinker.link(String(feature.properties['MAP Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -481,16 +426,6 @@
         bounds_group.addLayer(layer_Ladestationen_errichtet_4);
         map.addLayer(layer_Ladestationen_errichtet_4);
         function pop_Ladestationen_inUmsetzung_5(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['MAP Adresse'] !== null ? autolinker.link(String(feature.properties['MAP Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
